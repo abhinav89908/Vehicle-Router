@@ -1,13 +1,40 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@400;500;600;700&family=Ubuntu:ital,wght@0,300;0,400;1,300;1,400&family=Varela+Round&display=swap');
+
+*{
+    font-family: 'Ubuntu', sans-serif;
+    background-color: #fff;
+}
+.navbar {
+    background: #fff !important;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.navbar ul li :hover{
+    color: #ff3e03 !important;
+}
+
+.navbar a :active{
+    color: #ff3e03 !important;
+}
+
+.card .card-body{
+    max-width: 400px;
+    min-height: 250px;
+}
+
+.card .card-body a{
+    background-color: #f7caab !important;
+    border-color: #ff3e03;
+    color: #ff3e03 !important;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.card .card-body a:hover{
+    background-color: #ff3e03 !important;
+    border-color: #ff3e03;
+    color: #fff !important;
+}
+
+.card:hover{
+    transition: 0.2s;
+    transform: scale(1.02);
 }

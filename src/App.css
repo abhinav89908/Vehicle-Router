@@ -1,38 +1,163 @@
-.App {
-  text-align: center;
+*{
+    margin: 0;
+    box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Main Navbar Styles */
+.navbar {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    padding-right: 40px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.navbar-brand {
+    display: flex;
+    align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.logo {
+    color: #fff;
+    font-size: 24px;
+    text-decoration: none;
+    margin-right: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav-links li {
+    margin-right: 40px;
+}
+
+.nav-links li:last-child {
+    margin-right: 0;
+}
+
+.nav-links li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.logo:hover{
+    color: #bab8b8; /* Change to the desired hover color */
+}
+
+.nav-links li a:hover {
+    color: #f39c12; /* Change to the desired hover color */
+}
+
+.menu-icon{
+    display: none;
+    size: 24px;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 668px) {
+    .navbar {
+        /* flex-direction: column; */
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .nav-links li:last-child {
+        margin-bottom: 0;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .menu-icon {
+        display: block;
+        font-size: 24px;
+        cursor: pointer;
+    }
+}
+/* Navbar style ends here */
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.content {
+    text-align: left;
+    max-width: 700px;
+    /* padding: 20px; */
+}
+
+.content h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.content p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.get-started-button {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #f7caab;
+    font-weight: bold;
+    border: stroke 1px #ff6803;
+    border-radius: stroke 5px;
+    border-color: #ff6803;
+    color: #ff6803;
+    text-decoration: none;
+    transition: 0.5s;
+    border-radius: 20px;
+    font-size: 15px;
+}
+
+.get-started-button:hover{
+    /* background-color: #044f9f; */
+    /* transition: 0.5s; */
+    background-color: #ff3e03;
+    color: #fff;
+}
+
+.get-started-button:active{
+    transform: scale(0.9);
+}
+
+.image {
+    text-align: right;
+    padding: 20px;
+}
+
+.image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

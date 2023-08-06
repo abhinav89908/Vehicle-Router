@@ -1,0 +1,60 @@
+/* .centerbox{
+    position: absolute;
+    background-color: bisque;
+    align-items: center;
+    padding: 40px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+} */
+
+/* styles.css */
+
+/* Centering the centerbox */
+.centerbox {
+    margin: 0 auto;
+    max-width: 500px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Styling form elements */
+  .form-label {
+    font-weight: bold;
+  }
+  
+  .form-control {
+    margin-bottom: 10px;
+  }
+  
+  select {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Styling the header
+  .nav_bg {
+    background-color: #007bff;
+    padding: 20px;
+    text-align: center;
+  } */
+  
+  /* .nav_bg h1 {
+    color: #fff;
+  } */
+  
+  /* Styling the whole page */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+  }
+  
+  /* .container-fluid {
+    padding: 20px;
+  } */
+  
