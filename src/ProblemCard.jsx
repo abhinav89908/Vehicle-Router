@@ -13,7 +13,7 @@ const ProblemCard = (props) =>{
                     <div className="card-body">
                         <h5 className="card-title">{props.title}</h5>
                         <p className="card-text">{props.about}</p>
-                        <NavLink to={TSP} className="btn btn-primary">Solve</NavLink>
+                        <NavLink to={props.addr} className="btn btn-primary">Solve</NavLink>
                     </div>
                 </div>
             </div>
