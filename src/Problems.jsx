@@ -2,11 +2,12 @@ import React from 'react';
 import ProblemCard from './ProblemCard';
 import ProblemList from './data/ProblemList';
 
+
 const Problems = ()=>{
   return (
     <>
         <div className='my-5'>
-            <h1 className='text-center'>Problems</h1>
+            <h1 className='text-center' style={headColor}>Problems</h1>
         </div>
         <div className='container-fluid mb-5'>
             <div className='row'>
@@ -18,6 +19,7 @@ const Problems = ()=>{
                                     title={val.title}
                                     about={val.about}
                                     addr={val.addr}
+                                    imgsrc={val.imgsrc}
                                 />
                             })
                        }
@@ -39,5 +41,7 @@ const Problems = ()=>{
     </>
   );
 }
-
+const headColor = {
+    backgroundColor: '#101010 !important'
+}
 export default Problems;

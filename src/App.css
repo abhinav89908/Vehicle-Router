@@ -1,27 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@400;500;600;700&family=Ubuntu:ital,wght@0,300;0,400;1,300;1,400&family=Varela+Round&display=swap');
+
 *{
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif !important;
+    background-color: #101010 !important;
 }
 
 body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
+    
+}
+.row, .row div{
+    /* background-color: #101010; */
+}
+
+.container{
+    margin-top: 20px;
+    background-color: #1e1e1e !important;
+    border-radius: 60px !important;
 }
 
 /* Main Navbar Styles */
+nav{
+    margin: 10px;
+    border-radius: 40px ;
+}
+
 .navbar {
-    background-color: #333;
+    background-color: #1e1e1e;
     color: #fff;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px;
+    padding: 0px;
+    padding: 0 10px;
     padding-right: 40px;
+}
+
+nav, .navbar *, .nav-item li{
+    background-color: #1e1e1e !important;
+    color: white;
+}
+div .container-fluid{
+    border-radius: 50px;
 }
 
 .navbar-brand {
     display: flex;
+    margin-left: 10px;
+    align-items: center;
+}
+.navbar-brand2{
+    display: none;
+    text-decoration: none;
+    font-size: 19px;
+
+    margin-left: 10px;
     align-items: center;
 }
 
@@ -67,6 +104,15 @@ body {
     size: 24px;
 }
 
+h1, .content, strong, p{
+    background-color: #1e1e1e !important;
+    color: white;
+}
+
+.container a, p{
+    margin: 10px 30px !important;
+}
+
 /* Responsive Styles */
 @media screen and (max-width: 668px) {
     .navbar {
@@ -104,7 +150,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80vh;
+    padding: 22px;
+    height: 70vh;
 }
 
 .content {
@@ -140,8 +187,6 @@ body {
 }
 
 .get-started-button:hover{
-    /* background-color: #044f9f; */
-    /* transition: 0.5s; */
     background-color: #ff3e03;
     color: #fff;
 }
@@ -160,4 +205,22 @@ body {
     height: auto;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (max-width: 450px){
+    .navbar-brand{
+        display: none;
+    }
+    .navbar-brand2{
+        display: flex;
+    }
+    
+    .container h1{
+        margin: 15px 15px;
+        font-size: 30px;
+    }
+    .container p{
+        font-size: 15px;
+    }
+
 }

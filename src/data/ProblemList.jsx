@@ -1,17 +1,22 @@
-import TSP from "../TSP";
-import SVRP from "../SVRP";
+import web1 from  "../images/tsp.jpg";
+import web2 from  "../images/svrp.jpg";
 
 const ProblemList = [
     {
         title: "Travelling Salesman Problem (TSP)",
         about: "In the Vehicle Routing Problem (VRP), the goal is to find optimal routes for multiple vehicles visiting a set of locations." ,
-        addr: "/problems/TSP"
+        addr: "/problems/TSP",
+        imgsrc: web2
     },
     {
         title: "Vehicle Routing Problem (Standard)",
         about: "In the Vehicle Routing Problem (VRP), the goal is to find optimal routes for multiple vehicles visiting a set of locations.",
-        addr: "/problems/SVRP"
-    },
+        addr: "/problems/SVRP",
+        imgsrc: web2
+    }
+]    
+/*
+,
     {
         title: "Vehicle Routing Problem with Capacity Constraints",
         about: "The capacitated vehicle routing problem (CVRP) is a VRP in which vehicles with limited carrying capacity need to pick up or deliver items at various locations.",
@@ -33,5 +38,5 @@ const ProblemList = [
         addr: "/problems/TSP"
     },
 ]
-
+*/
 export default ProblemList;

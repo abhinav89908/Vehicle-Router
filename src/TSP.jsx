@@ -12,6 +12,11 @@ const TSP = () => {
     const [result, setResult] = useState([1,3,2,3]);
     const [cityChoosen, setCity] = useState([]);
 
+    const calculateDistance = (i, j) =>{
+        var d = Math.abs(Geolocation[i].Latitude-Geolocation[i+1].Latitude) + Math.abs(Geolocation[i].Longitude-Geolocation[i+1].Longitude)
+        return d.toFixed(2);
+    }
+
     const handleoutput = (plan) =>{
         console.log("Output handling....");
         console.log(plan);
@@ -23,12 +28,32 @@ const TSP = () => {
         const output = numbersAsStringArray.map(Number);
         var i=0;
         console.log("City choosen: " + cityChoosen);
-        while(i<output.length){
+        while(i<output.length-1){
             var newp = document.createElement("p");
+            newp.setAttribute("id", "cityname");
             var cityname = cityChoosen[output[i]];
             newp.textContent = "" + cityname;
             document.getElementById('cityoutput').appendChild(newp);
+
+            var detail = document.createElement("p");
+            detail.setAttribute("id", "plandetail");
+            var d = calculateDistance(output[i], output[i+1]);
+            detail.textContent = "From " + cityname + " go to city " + cityChoosen[output[i+1]] + " travelling a manhattan distance of " + d + " units";
+            document.getElementById('cityoutput').appendChild(detail);
             i++;
+        }
+        if(i<output.length){
+            var newp = document.createElement("p");
+            newp.setAttribute("id", "cityname");
+            var cityname = cityChoosen[output[i]];
+            newp.textContent = "" + cityname;
+            document.getElementById('cityoutput').appendChild(newp);
+
+            // var detail = document.createElement("p");
+            // detail.setAttribute("id", "plandetail");
+            // var d = plan['total distance'];
+            // detail.textContent = "Total Distance Travelled : " + d + " units.";
+            // document.getElementById('cityoutput').appendChild(detail);
         }
     
     }
@@ -57,7 +82,6 @@ const TSP = () => {
     }
 
     const data = (str) =>{
-        
         // const apiUrl = 'https://vehiclerouter.onrender.com/vrp';
         // const distanceParam = str;
         // const numVehiclesParam = '1';
@@ -85,18 +109,15 @@ const TSP = () => {
             })
             .then((data) => {
                 // Data is the parsed JSON object
-                
                 handleoutput(data);
                 console.log(data);
             })
             .catch((error) => {
                 console.error("Error fetching data:", error);
             });
-
-
     }
 
-    const process = (event) =>{
+    const process = async (event) =>{
         console.log("Number of cities choosen: " + numDivs);
         let p=1;
         let coordinates = [];
@@ -129,8 +150,12 @@ const TSP = () => {
         var y = Geolocation[index].Longitude;
         
         str = str + x + "%20" + y + "&num_vehicles=1&depot=" + coordinates.length;
-        
-        data(str);
+        try{
+            const fetched = await data(str);
+        }
+        catch(err){
+            console.log("Can't fetch the request!")
+        }
 
         let distMat=[];
         
@@ -151,23 +176,12 @@ const TSP = () => {
         <>
             <div className='container-fluid nav_bg' >
                 <div className='row' >
-                    <div className='centerbox col-8 mx-auto mt-5 mb-5' >
+                    <div className='centerbox col-10 mx-auto mt-5 mb-5' >
                         <div>
                             <form action="" onSubmit={formSubmit} >
                                 <h2 className='text-center'>Input Details</h2>
                                 <hr />
-                                <div className="mb-3" >
-                                    
-                                    <label for="formGroupExampleInput" className="form-label" >Number of Vehicles: </label>
-                                    <input 
-                                        type="number" 
-                                        className="form-control" 
-                                        id="numberofvehicles" 
-                                        placeholder="Number of Vehicles" 
-                                        required
-                                    />
-                                </div>
-                            
+                                <br />
                                 <div className="mb-3" >
                                 <label htmlFor={`formGroupExampleInputDepot`} className="form-label" >
                                     Location of Depot:
@@ -203,23 +217,42 @@ const TSP = () => {
                                     </div>
                                 ))}
                                 {/* Add button to add more divs */}
+                                <br />
                                 <div className="buttons">
                                     <button id='addBut' onClick={handleAddDiv}>Add City</button>
                                     <button id='delBut' onClick={handleDelDiv}>Delete City</button>
                                     <button id='submitBut' type='submit'>Submit</button>
                                 </div>
+                                <p id='plandetail'>*Note: Please wait 2-4 seconds to calculate the result.</p>
+                                <p id='plandetail'>*Note: If plan output is undefined the press submit button again.</p>
                             </form> 
                         </div>
                     </div>
-                    <div className='centerbox col-8 mx-auto mt-5 mb-5' >
-                            <h2 className='text-center'>Plan Output</h2>
-                            <hr />
-                            <div id="cityoutput">
-                            </div>
-                            {/* <div className="buttons">
-                                <button id='addBut2' onClick={handleoutput}>Add City</button>
-                                <button id='addBut3' onClick={deleteOutput}>Add City</button>
-                            </div> */}
+                    <div className='centerbox col-10 mx-auto mt-5 mb-5' >
+                        <h2 className='text-center'>Plan Output</h2>
+                        <hr />
+                        <br />
+                        <div id="cityoutput">
+                            <p id='plandetail'>*Note: Please wait 2-4 seconds to calculate the result.</p>
+                            <p id='plandetail'>*Note: If plan output is undefined the press submit button again.</p>
+                            
+                            {/* <p id='cityname'>City where the depot is located</p>
+                            <p id='pathdetail'>
+                                The distance from the depot to the first intermediate city
+                                will be displayed here...
+                            </p>
+                            <p id='cityname'>First Intermediate city</p>
+                            <p id='pathdetail'>
+                                Distance between the intermediate cities will be displayed here...
+                            </p>
+                            <p id='cityname'>Last Intermediate city</p>
+                            <p id='pathdetail'>
+                                The distance from the last intermediate city to the depot
+                                will be displayed here...
+                            </p>
+                            <p id='cityname'>City where the depot is located</p>
+                            <br /> */}
+                        </div>
                     </div>
                 </div>
             </div>

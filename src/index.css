@@ -1,15 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@400;500;600;700&family=Ubuntu:ital,wght@0,300;0,400;1,300;1,400&family=Varela+Round&display=swap');
 
 *{
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Ubuntu', sans-serif !important;
     background-color: #fff;
 }
 .navbar {
-    background: #fff !important;
+    background: #1e1e1e !important;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 30 30%27%3e%3cpath stroke=%27rgba%28240, 239, 239, 0.85%29%27 stroke-linecap=%27round%27 stroke-miterlimit=%2710%27 stroke-width=%272%27 d=%27M4 7h22M4 15h22M4 23h22%27/%3e%3c/svg%3e") !important;
+}
+
+.navbar ul a{
+    color: #bdbaba !important;
+}
+.navbar ul a:active{
+    color: #ff3e03;
 }
 
 .navbar ul li :hover{
-    color: #ff3e03 !important;
+    color: #f9f8f7 !important;
 }
 
 .navbar a :active{
@@ -17,14 +28,17 @@
 }
 
 .card .card-body{
+    /* border-end-end-radius: 30px; */
+    border-bottom-left-radius: 15px;;
+    border-bottom-right-radius: 15px;
     max-width: 400px;
     min-height: 250px;
 }
 
 .card .card-body a{
-    background-color: #f7caab !important;
-    border-color: #ff3e03;
-    color: #ff3e03 !important;
+    background-color: #343332 !important;
+    border-color: #020000;
+    color: #dedddc !important;
     font-weight: bold;
     transition: 0.3s;
 }

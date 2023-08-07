@@ -1,0 +1,23 @@
+h5{
+    color: white !important;
+}
+p{
+    /* background-color: chartreuse !important; */
+}
+.card-body{
+    background-color: #1e1e1e !important;
+    
+}
+.card p{
+    margin: 10px 0px !important; 
+}
+.card a{
+    width: 100%;
+    background-color: rgb(196, 69, 0) !important;
+}
+.card *{
+    background-color: #1e1e1e !important;
+}
+.card {
+    border-radius: 50px !important;
+}

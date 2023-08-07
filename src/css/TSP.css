@@ -2,14 +2,6 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
 }
-.container {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
 h1 {
     text-align: center;
 }
@@ -18,15 +10,22 @@ h2{
 }
 label {
     display: block;
-    font-weight: bold;
+    font-weight: 400 !important;
+    color: #d6960b !important;
     margin-bottom: 5px;
 }
+::placeholder {
+    color: rgb(196, 193, 193);
+    opacity: 1; /* Firefox */
+  }
+
 input,
 select {
     width: 100%;
     padding: 12px;
     /* margin-bottom: 5px; */
-    border: 1px solid #ccc;
+    color: white;
+    border: 0.1px solid #c28a1053;
     border-radius: 7px;
     font-size: 16px;
 }
@@ -35,18 +34,32 @@ select[multiple] {
 }
 
 Button{
-    display: block;
-    float: left;
-    padding: 10px;
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #262525 !important;
+    font-weight: bold;
+    border: stroke 1px #ff6803;
+    border-radius: stroke 8px;
+    border-color: #ff6803;
+    color: #ff6803 !important;
+    text-decoration: none;
+    transition: 0.5s;
+    border-radius: 20px;
+    font-size: 15px;
+
     margin: 10px;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
     cursor: pointer;
 }
+.buttons :hover{
+    transform: scale(1.1) !important;
+    color: white !important;
+}
+.centerbox *{
+    color: rgb(235, 233, 233);
+}
 
-#submitBut{
-    background-color: #03c609;
+#submitBut *{
+    background-color: #03c609 !important;
     color: #fff;
 }
 #addBut{
@@ -57,16 +70,24 @@ Button{
     background-color: #ff5005;
     color: #fff;
 }
-.centerbox, .centerbox div, form, label, input, h2{
-    background-color: aquamarine;
+.centerbox, .centerbox div, form, label, input, h2, select{
+    background-color: rgb(28, 28, 28) !important;
 }
 
-#cityoutput p{
-    margin-left: 25%;
-    margin-right: 25%;
+#cityname{
+    padding-left: 10%;
+    padding-right: 10%;
+    background-color: #2d2c2c !important;
     padding: 10px;
     border-radius: 40px;
     text-align: center;
-    font-weight: bold;
+    font-weight: 500;
     font-size: 20px;
+}
+
+#plandetail{
+    background-color:#1c1c1c !important;
+    color: #434242 !important;
+    text-align: center;
+    margin: 25px !important;
 }

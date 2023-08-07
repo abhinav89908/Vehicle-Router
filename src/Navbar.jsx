@@ -8,6 +8,7 @@ const Navbar = ()=>{
             <a href="#" className="logo">Dial-a-ride</a>
         </div>
         
+        
         <ul className="nav-links">
             <li><a href="#">Home</a></li>
             <li><a href="#">About</a></li>
