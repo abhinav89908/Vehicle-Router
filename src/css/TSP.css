@@ -85,6 +85,18 @@ Button{
     font-size: 20px;
 }
 
+#vehiclename{
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-bottom: 30px !important;
+    background-color: #545353 !important;
+    padding: 10px;
+    border-radius: 20px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 22px;
+}
+
 #plandetail{
     background-color:#1c1c1c !important;
     color: #434242 !important;

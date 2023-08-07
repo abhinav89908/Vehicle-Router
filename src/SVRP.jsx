@@ -18,47 +18,64 @@ const SVRP = () => {
     }
 
     const handleoutput = (plan) =>{
-        console.log("Output handling....");
-        console.log(plan);
+        // console.log("Output handling....");
+        // console.log(plan);
         deleteOutput();
-        console.log("Adding new paras..");
+        // console.log("Adding new paras..");
         var outputString = plan['plan output'];
-        console.log(outputString);
-        const numbersAsStringArray = outputString[0].split(' ');
-        const output = numbersAsStringArray.map(Number);
-        var i=0;
-        console.log("City choosen: " + cityChoosen);
-        while(i<output.length-1){
-            var newp = document.createElement("p");
-            newp.setAttribute("id", "cityname");
-            var cityname = cityChoosen[output[i]];
-            newp.textContent = "" + cityname;
-            document.getElementById('cityoutput').appendChild(newp);
+        // console.log(outputString);
+        var vehicle=0;
+        while(vehicle<outputString.length){
+            const numbersAsStringArray = outputString[vehicle].split(' ');
+            const output = numbersAsStringArray.map(Number);
+            var newtitle = document.createElement("p");
+                newtitle.textContent = 'Path of Vehicle ' + (vehicle+1);
+                newtitle.setAttribute("id", "vehiclename");
+                document.getElementById('cityoutput').appendChild(newtitle);
+            if(output.length<=2){
+                var detail = document.createElement("p");
+                detail.setAttribute("id", "plandetail");
+                detail.textContent = "Vechle " + (vehicle+1) + " will not go anywhere.";
+                document.getElementById('cityoutput').appendChild(detail);
+            }
+            else{            
+                var i=0;
+                // console.log("City choosen: " + cityChoosen);
+                while(i<output.length-1){
+                    var newp = document.createElement("p");
+                    newp.setAttribute("id", "cityname");
+                    var cityname = cityChoosen[output[i]];
+                    newp.textContent = "" + cityname;
+                    document.getElementById('cityoutput').appendChild(newp);
 
-            var detail = document.createElement("p");
-            detail.setAttribute("id", "plandetail");
-            var d = calculateDistance(output[i], output[i+1]);
-            detail.textContent = "From " + cityname + " go to city " + cityChoosen[output[i+1]] + " travelling a manhattan distance of " + d + " units";
-            document.getElementById('cityoutput').appendChild(detail);
-            i++;
-        }
-        if(i<output.length){
-            var newp = document.createElement("p");
-            newp.setAttribute("id", "cityname");
-            var cityname = cityChoosen[output[i]];
-            newp.textContent = "" + cityname;
-            document.getElementById('cityoutput').appendChild(newp);
+                    var detail = document.createElement("p");
+                    detail.setAttribute("id", "plandetail");
+                    var d = calculateDistance(output[i], output[i+1]);
+                    detail.textContent = "From " + cityname + " go to city " + cityChoosen[output[i+1]] + " travelling a manhattan distance of " + d + " units";
+                    document.getElementById('cityoutput').appendChild(detail);
+                    i++;
+                }
+                if(i<output.length){
+                    var newp = document.createElement("p");
+                    newp.setAttribute("id", "cityname");
+                    var cityname = cityChoosen[output[i]];
+                    newp.textContent = "" + cityname;
+                    document.getElementById('cityoutput').appendChild(newp);
+                }
+            }
+            document.getElementById('cityoutput').appendChild(document.createElement("hr"));
 
-            // var detail = document.createElement("p");
-            // detail.setAttribute("id", "plandetail");
-            // var d = plan['total distance'];
-            // detail.textContent = "Total Distance Travelled : " + d + " units.";
-            // document.getElementById('cityoutput').appendChild(detail);
+
+            vehicle++;
         }
+
+
+
+        
     
     }
     const deleteOutput = () =>{
-        console.log('Deleting the paras');
+        // console.log('Deleting the paras');
         var container = document.getElementById('cityoutput');
         while (container.firstChild) {
             container.removeChild(container.firstChild);
@@ -66,14 +83,14 @@ const SVRP = () => {
     }
 
     const handleAddDiv = () => {
-        console.log("Number of prev options are: " + numDivs);
+        // console.log("Number of prev options are: " + numDivs);
         setNumDivs(numDivs + 1);
-        console.log("Number of select options are: " + numDivs);
+        // console.log("Number of select options are: " + numDivs);
     };
     
     const handleDelDiv = () => {
         if(numDivs>1) setNumDivs(numDivs - 1);
-        console.log("Number of select options are: " + numDivs);
+        // console.log("Number of select options are: " + numDivs);
     };
 
     const formSubmit = (event) =>{
@@ -109,16 +126,16 @@ const SVRP = () => {
             })
             .then((data) => {
                 // Data is the parsed JSON object
-                // handleoutput(data);
-                console.log(data);
+                handleoutput(data);
+                // console.log(data);
             })
             .catch((error) => {
-                console.error("Error fetching data:", error);
+                // console.error("Error fetching data:", error);
             });
     }
 
     const process = async (event) =>{
-        console.log("Number of cities choosen: " + numDivs);
+        // console.log("Number of cities choosen: " + numDivs);
         let p=1;
         let coordinates = [];
         var cities = [];
@@ -127,12 +144,12 @@ const SVRP = () => {
             var city = selectElement.value;
             let index = CityIndex.get(city);
             cities.push(city);
-            console.log(Geolocation[index].Latitude + " " + Geolocation[index].Longitude);
+            // console.log(Geolocation[index].Latitude + " " + Geolocation[index].Longitude);
             coordinates.push([Geolocation[index].Latitude, Geolocation[index].Longitude]);
             p++;
         }
         
-        console.log(coordinates);
+        // console.log(coordinates);
         let i=0, j=0;
         let str = "https://vehiclerouter.onrender.com/vrp?distance=";
         for(i=0; i<coordinates.length; i++){
@@ -142,7 +159,7 @@ const SVRP = () => {
         selectElement = document.getElementById('depot');
         city = selectElement.value;
         cities.push(city);
-        console.log(cities);
+        // console.log(cities);
         setCity(cities);
         let index = CityIndex.get(city);
         
@@ -154,7 +171,7 @@ const SVRP = () => {
             const fetched = await data(str, numVehicles);
         }
         catch(err){
-            console.log("Can't fetch the request!")
+            // console.log("Can't fetch the request!")
         }
 
         let distMat=[];

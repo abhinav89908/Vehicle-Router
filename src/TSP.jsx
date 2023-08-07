@@ -18,16 +18,16 @@ const TSP = () => {
     }
 
     const handleoutput = (plan) =>{
-        console.log("Output handling....");
-        console.log(plan);
+        // console.log("Output handling....");
+        // console.log(plan);
         deleteOutput();
-        console.log("Adding new paras..");
+        // console.log("Adding new paras..");
         var outputString = plan['plan output'];
-        console.log(outputString);
+        // console.log(outputString);
         const numbersAsStringArray = outputString[0].split(' ');
         const output = numbersAsStringArray.map(Number);
         var i=0;
-        console.log("City choosen: " + cityChoosen);
+        // console.log("City choosen: " + cityChoosen);
         while(i<output.length-1){
             var newp = document.createElement("p");
             newp.setAttribute("id", "cityname");
@@ -58,7 +58,7 @@ const TSP = () => {
     
     }
     const deleteOutput = () =>{
-        console.log('Deleting the paras');
+        // console.log('Deleting the paras');
         var container = document.getElementById('cityoutput');
         while (container.firstChild) {
             container.removeChild(container.firstChild);
@@ -66,14 +66,14 @@ const TSP = () => {
     }
 
     const handleAddDiv = () => {
-        console.log("Number of prev options are: " + numDivs);
+        // console.log("Number of prev options are: " + numDivs);
         setNumDivs(numDivs + 1);
-        console.log("Number of select options are: " + numDivs);
+        // console.log("Number of select options are: " + numDivs);
     };
     
     const handleDelDiv = () => {
         if(numDivs>1) setNumDivs(numDivs - 1);
-        console.log("Number of select options are: " + numDivs);
+        // console.log("Number of select options are: " + numDivs);
     };
 
     const formSubmit = (event) =>{
@@ -110,15 +110,15 @@ const TSP = () => {
             .then((data) => {
                 // Data is the parsed JSON object
                 handleoutput(data);
-                console.log(data);
+                // console.log(data);
             })
             .catch((error) => {
-                console.error("Error fetching data:", error);
+                // console.error("Error fetching data:", error);
             });
     }
 
     const process = async (event) =>{
-        console.log("Number of cities choosen: " + numDivs);
+        // console.log("Number of cities choosen: " + numDivs);
         let p=1;
         let coordinates = [];
         var cities = [];
@@ -127,12 +127,12 @@ const TSP = () => {
             var city = selectElement.value;
             let index = CityIndex.get(city);
             cities.push(city);
-            console.log(Geolocation[index].Latitude + " " + Geolocation[index].Longitude);
+            // console.log(Geolocation[index].Latitude + " " + Geolocation[index].Longitude);
             coordinates.push([Geolocation[index].Latitude, Geolocation[index].Longitude]);
             p++;
         }
         
-        console.log(coordinates);
+        // console.log(coordinates);
         let i=0, j=0;
         let str = "https://vehiclerouter.onrender.com/vrp?distance=";
         for(i=0; i<coordinates.length; i++){
@@ -142,7 +142,7 @@ const TSP = () => {
         selectElement = document.getElementById('depot');
         city = selectElement.value;
         cities.push(city);
-        console.log(cities);
+        // console.log(cities);
         setCity(cities);
         let index = CityIndex.get(city);
         
@@ -154,7 +154,7 @@ const TSP = () => {
             const fetched = await data(str);
         }
         catch(err){
-            console.log("Can't fetch the request!")
+            // console.log("Can't fetch the request!")
         }
 
         let distMat=[];
